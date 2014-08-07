@@ -1,0 +1,7 @@
+---
+  - name: Install nginx and index.html
+    hosts: appservers
+    user: root
+
+    roles:
+      - nginx

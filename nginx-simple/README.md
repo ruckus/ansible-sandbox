@@ -1,0 +1,1 @@
+Super basic playbook to install nginx and a single index.html at the web root

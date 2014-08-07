@@ -1,0 +1,10 @@
+---
+# These tasks install nginx
+
+- name: Install nginx
+  apt: name={{ item }} state=present
+  with_items:
+   - nginx
+
+- name: http service state
+  service: name=nginx state=started enabled=yes

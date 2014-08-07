@@ -1,0 +1,17 @@
+---
+- name: Install nginx
+  apt: name=nginx state=present
+
+- name: Copy nginx configuration
+  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+  notify: restart nginx
+
+- name: Create web root
+  file: path=/var/www state=directory owner=root mode=755
+
+- name: Copy index.html
+  template: src=index.html.j2 dest=/var/www/index.html
+  notify: restart nginx
+
+- name: Remove default nginx configs
+  file: path=/etc/nginx/sites-enabled state=absent
